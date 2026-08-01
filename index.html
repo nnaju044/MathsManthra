@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smija K S | MathsManthra Academy — Build Your Online Teaching Business</title>
+<meta name="description" content="Smija K S, founder of MathsManthra Academy, helps teachers and tutors build profitable online education businesses using AI, branding and proven systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --grey-bg:#F8F9FB;
+    --charcoal:#1E1E1E;
+    --charcoal-soft:#5B5B5B;
+    --gold:#C8A65A;
+    --gold-deep:#A9843F;
+    --gold-tint:#F3E9D6;
+    --gold-glass: rgba(200,166,90,0.14);
+    --line: rgba(30,30,30,0.08);
+    --shadow-soft: 0 20px 60px -25px rgba(30,30,30,0.25);
+    --shadow-tight: 0 8px 24px -12px rgba(30,30,30,0.18);
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+    --ff-display:'Poppins', sans-serif;
+    --ff-body:'Inter', sans-serif;
+    --ff-label:'Manrope', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--ff-body);
+    color:var(--charcoal);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  section{position:relative;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Scroll progress ---------- */
+  .scroll-progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--gold-deep), var(--gold));
+    z-index:2000; transition:width 0.08s linear;
+  }
+
+  /* ---------- Navbar ---------- */
+  .navbar{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    padding:22px 0; transition:all .35s ease;
+  }
+  .navbar .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .navbar.scrolled{
+    padding:14px 0; background:rgba(255,255,255,0.78); backdrop-filter:blur(16px) saturate(160%);
+    box-shadow:0 1px 0 var(--line);
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--ff-display); font-weight:700; font-size:1.15rem; letter-spacing:-0.01em;}
+  .brand .mark{
+    width:38px;height:38px;border-radius:11px;
+    background:linear-gradient(135deg, var(--gold), var(--gold-deep));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--white); font-family:var(--ff-display); font-weight:700; font-size:1.05rem;
+    box-shadow:0 6px 16px -6px rgba(169,132,63,0.6);
+  }
+  .brand small{display:block; font-family:var(--ff-label); font-weight:500; font-size:0.62rem; letter-spacing:0.08em; color:var(--charcoal-soft); text-transform:uppercase; margin-top:1px;}
+  .nav-links{display:flex; align-items:center; gap:34px; font-family:var(--ff-label); font-size:0.88rem; font-weight:600;}
+  .nav-links a{position:relative; padding:4px 0; opacity:0.82; transition:opacity .25s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--gold);transition:width .3s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    padding:11px 22px; border-radius:999px; background:var(--charcoal); color:var(--white);
+    font-family:var(--ff-label); font-weight:600; font-size:0.85rem; transition:all .3s ease;
+    box-shadow:0 8px 20px -10px rgba(30,30,30,0.4);
+  }
+  .nav-cta:hover{background:var(--gold-deep); transform:translateY(-1px);}
+  .nav-toggle{display:none;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:16px 30px; border-radius:999px;
+    font-family:var(--ff-label); font-weight:700; font-size:0.92rem; letter-spacing:0.01em;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, background .3s ease;
+  }
+  .btn-primary{background:linear-gradient(135deg, var(--gold), var(--gold-deep)); color:var(--white); box-shadow:0 14px 30px -12px rgba(169,132,63,0.55);}
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 20px 36px -12px rgba(169,132,63,0.65);}
+  .btn-ghost{background:var(--white); color:var(--charcoal); border:1.5px solid var(--line); box-shadow:var(--shadow-tight);}
+  .btn-ghost:hover{transform:translateY(-3px); border-color:var(--gold);}
+  .btn-dark{background:var(--charcoal); color:var(--white);}
+  .btn-dark:hover{background:var(--gold-deep); transform:translateY(-3px);}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal-stagger > *{transition-delay:calc(var(--i, 0) * 90ms);}
+
+  /* ---------- Eyebrow / section heading ---------- */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--ff-label); font-weight:700;
+    font-size:0.74rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-deep);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1.5px;background:var(--gold);}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  h1,h2,h3,h4{font-family:var(--ff-display); font-weight:700; letter-spacing:-0.02em; color:var(--charcoal);}
+  .section-head h2{font-size:2.5rem; line-height:1.15; margin-bottom:16px;}
+  .section-head p{font-size:1.06rem; color:var(--charcoal-soft); line-height:1.65;}
+
+  /* ================= HERO ================= */
+  .hero{
+    padding:168px 0 110px; background:
+      radial-gradient(1100px 620px at 82% -10%, var(--gold-tint) 0%, rgba(243,233,214,0) 60%),
+      var(--white);
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+  .hero-copy .eyebrow{color:var(--gold-deep);}
+  .hero h1{font-size:3.55rem; line-height:1.08; margin-bottom:22px;}
+  .hero h1 em{font-style:normal; background:linear-gradient(100deg, var(--gold-deep), var(--gold) 60%); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero p.lead{font-size:1.15rem; color:var(--charcoal-soft); line-height:1.7; max-width:520px; margin-bottom:36px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:56px;}
+  .hero-stats{display:grid; grid-template-columns:repeat(3,auto); gap:40px;}
+  .hero-stats .stat-num{font-family:var(--ff-display); font-weight:800; font-size:2.05rem; color:var(--charcoal); line-height:1;}
+  .hero-stats .stat-num span{color:var(--gold-deep);}
+  .hero-stats .stat-label{font-family:var(--ff-label); font-size:0.78rem; color:var(--charcoal-soft); margin-top:6px; letter-spacing:0.02em;}
+
+  .hero-visual{position:relative; display:flex; justify-content:center;}
+  .portrait-card{
+    position:relative; width:100%; max-width:400px; border-radius:32px; overflow:hidden;
+    box-shadow:var(--shadow-soft); border:1px solid rgba(255,255,255,0.6);
+  }
+  .portrait-card img{width:100%; height:560px; object-fit:cover; object-position:top center;}
+  .portrait-card::after{
+    content:''; position:absolute; inset:0; background:linear-gradient(190deg, rgba(30,30,30,0) 55%, rgba(30,30,30,0.55) 100%);
+  }
+  .portrait-caption{
+    position:absolute; left:24px; right:24px; bottom:22px; z-index:2; color:var(--white);
+  }
+  .portrait-caption .name{font-family:var(--ff-display); font-weight:700; font-size:1.15rem;}
+  .portrait-caption .role{font-family:var(--ff-label); font-size:0.78rem; opacity:0.88; margin-top:2px;}
+  .float-badge{
+    position:absolute; z-index:3; background:rgba(255,255,255,0.75); backdrop-filter:blur(14px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.7); border-radius:18px; padding:14px 18px;
+    box-shadow:var(--shadow-tight); font-family:var(--ff-label);
+    animation:float 5s ease-in-out infinite;
+  }
+  .float-badge.b1{top:6%; left:-9%; animation-delay:0s;}
+  .float-badge.b2{bottom:9%; right:-11%; animation-delay:1.4s;}
+  .float-badge .n{font-family:var(--ff-display); font-weight:800; font-size:1.3rem; color:var(--gold-deep);}
+  .float-badge .l{font-size:0.7rem; color:var(--charcoal-soft); font-weight:600;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+  /* ================= ABOUT ================= */
+  .about{padding:120px 0; background:var(--grey-bg);}
+  .about .wrap{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;}
+  .about-titles{display:flex; flex-direction:column; gap:14px; margin-top:8px;}
+  .role-pill{
+    display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px;
+    background:var(--white); border:1px solid var(--line); box-shadow:var(--shadow-tight);
+    font-family:var(--ff-label); font-weight:600; font-size:0.9rem;
+  }
+  .role-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);}
+  .about-copy p{font-size:1.08rem; line-height:1.8; color:var(--charcoal-soft); margin-bottom:20px;}
+  .about-copy strong{color:var(--charcoal); font-weight:600;}
+  .mission-card{
+    margin-top:28px; padding:30px 32px; border-radius:var(--radius-md);
+    background:linear-gradient(135deg, var(--charcoal), #302a20);
+    color:var(--white); box-shadow:var(--shadow-soft);
+  }
+  .mission-card .tag{font-family:var(--ff-label); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:block;}
+  .mission-card p{color:rgba(255,255,255,0.86); font-size:1.08rem; line-height:1.7; margin:0;}
+
+  /* ================= TIMELINE ================= */
+  .timeline-sec{padding:130px 0; background:var(--white); position:relative;}
+  .timeline{position:relative; margin-top:60px;}
+  .timeline-track{
+    position:relative; display:flex; justify-content:space-between; align-items:flex-start; gap:8px;
+  }
+  .timeline-line{
+    position:absolute; top:23px; left:0; right:0; height:2px; background:var(--line); z-index:0;
+  }
+  .timeline-line-fill{
+    position:absolute; top:23px; left:0; height:2px; background:linear-gradient(90deg, var(--gold-deep), var(--gold)); width:0%;
+    z-index:1; transition:width 1.4s cubic-bezier(.2,.7,.2,1);
+  }
+  .timeline-step{position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; flex:1; text-align:center;}
+  .timeline-dot{
+    width:46px;height:46px;border-radius:50%; background:var(--white); border:2px solid var(--line);
+    display:flex;align-items:center;justify-content:center; font-family:var(--ff-display); font-weight:700; color:var(--charcoal-soft);
+    transition:all .5s ease; margin-bottom:18px;
+  }
+  .timeline-step.active .timeline-dot{border-color:var(--gold); background:linear-gradient(135deg, var(--gold), var(--gold-deep)); color:var(--white); box-shadow:0 10px 22px -8px rgba(169,132,63,0.6);}
+  .timeline-step h4{font-size:1rem; margin-bottom:6px;}
+  .timeline-step p{font-size:0.82rem; color:var(--charcoal-soft); max-width:150px;}
+  .timeline-step.final .timeline-dot{background:linear-gradient(135deg, var(--gold), var(--gold-deep)); border-color:var(--gold); color:var(--white);}
+
+  /* ================= SERVICES ================= */
+  .services{padding:120px 0; background:var(--grey-bg);}
+  .services-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;}
+  .service-card{
+    position:relative; padding:34px 28px; border-radius:var(--radius-md);
+    background:rgba(255,255,255,0.7); backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.8); box-shadow:var(--shadow-tight);
+    transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .4s ease;
+    overflow:hidden;
+  }
+  .service-card::before{
+    content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease;
+    background:radial-gradient(320px 160px at 90% -10%, var(--gold-tint), transparent 70%);
+  }
+  .service-card:hover{transform:translateY(-8px); box-shadow:var(--shadow-soft); border-color:rgba(200,166,90,0.4);}
+  .service-card:hover::before{opacity:1;}
+  .service-num{font-family:var(--ff-display); font-weight:800; font-size:0.82rem; color:var(--gold-deep); letter-spacing:0.06em; margin-bottom:16px; display:block;}
+  .service-icon{
+    width:52px;height:52px;border-radius:14px; margin-bottom:20px;
+    background:linear-gradient(135deg, var(--gold-tint), #fff); border:1px solid rgba(200,166,90,0.35);
+    display:flex; align-items:center; justify-content:center; color:var(--gold-deep);
+    position:relative; z-index:1;
+  }
+  .service-card h4{font-size:1.16rem; margin-bottom:10px; position:relative; z-index:1;}
+  .service-card p{font-size:0.92rem; color:var(--charcoal-soft); line-height:1.6; position:relative; z-index:1;}
+
+  /* ================= WORKSHOP ================= */
+  .workshop{padding:130px 0; background:var(--charcoal); color:var(--white); position:relative; overflow:hidden;}
+  .workshop::before{
+    content:''; position:absolute; top:-30%; right:-10%; width:640px; height:640px; border-radius:50%;
+    background:radial-gradient(circle, rgba(200,166,90,0.22), transparent 70%);
+  }
+  .workshop .wrap{position:relative; display:grid; grid-template-columns:0.95fr 1.05fr; gap:60px; align-items:center;}
+  .workshop-copy .eyebrow{color:var(--gold);}
+  .workshop-copy h2{color:var(--white); font-size:2.5rem; margin-bottom:18px;}
+  .workshop-copy p{color:rgba(255,255,255,0.72); font-size:1.05rem; line-height:1.7; margin-bottom:26px;}
+  .topic-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px 20px;}
+  .topic-item{display:flex; align-items:center; gap:10px; font-family:var(--ff-label); font-size:0.92rem; color:rgba(255,255,255,0.86);}
+  .topic-item .tick{width:20px;height:20px;border-radius:50%; background:rgba(200,166,90,0.18); border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+
+  .pricing-card{
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); border-radius:var(--radius-lg);
+    padding:44px 40px; backdrop-filter:blur(20px); box-shadow:0 30px 70px -30px rgba(0,0,0,0.6);
+    position:relative;
+  }
+  .offer-badge{
+    position:absolute; top:-16px; right:36px; background:linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color:var(--white); font-family:var(--ff-label); font-weight:700; font-size:0.78rem; padding:9px 18px;
+    border-radius:999px; box-shadow:0 12px 24px -10px rgba(169,132,63,0.6);
+  }
+  .pricing-title{font-family:var(--ff-display); font-weight:700; font-size:1.3rem; margin-bottom:6px;}
+  .pricing-sub{color:rgba(255,255,255,0.6); font-size:0.9rem; margin-bottom:28px;}
+  .price-row{display:flex; align-items:baseline; gap:14px; margin-bottom:6px;}
+  .price-now{font-family:var(--ff-display); font-weight:800; font-size:3rem; color:var(--gold);}
+  .price-was{font-family:var(--ff-label); font-size:1.15rem; color:rgba(255,255,255,0.42); text-decoration:line-through;}
+  .price-note{font-size:0.82rem; color:rgba(255,255,255,0.55); margin-bottom:30px;}
+  .pricing-feats{display:flex; flex-direction:column; gap:12px; margin-bottom:32px;}
+  .pricing-feats li{display:flex; align-items:center; gap:10px; font-size:0.92rem; color:rgba(255,255,255,0.85);}
+  .pricing-card .btn-primary{width:100%; justify-content:center;}
+
+  /* ================= TESTIMONIALS ================= */
+  .stories{padding:130px 0; background:var(--white);}
+  .story-track-wrap{position:relative;}
+  .story-track{display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory; padding:8px 4px 28px; scrollbar-width:none;}
+  .story-track::-webkit-scrollbar{display:none;}
+  .story-card{
+    scroll-snap-align:start; min-width:340px; max-width:340px; padding:32px; border-radius:var(--radius-md);
+    background:var(--grey-bg); border:1px solid var(--line); box-shadow:var(--shadow-tight);
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .story-stars{color:var(--gold); font-size:0.95rem; letter-spacing:2px;}
+  .story-quote{font-size:0.98rem; line-height:1.7; color:var(--charcoal); flex-grow:1;}
+  .story-person{display:flex; align-items:center; gap:12px;}
+  .avatar{
+    width:46px;height:46px;border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:var(--ff-display); font-weight:700; color:var(--white); font-size:0.95rem; flex-shrink:0;
+  }
+  .story-person .who b{display:block; font-size:0.92rem;}
+  .story-person .who span{display:block; font-size:0.78rem; color:var(--charcoal-soft);}
+  .story-metric{
+    display:inline-flex; align-self:flex-start; gap:6px; align-items:center; font-family:var(--ff-label); font-weight:700;
+    font-size:0.78rem; color:var(--gold-deep); background:var(--gold-tint); padding:6px 12px; border-radius:999px;
+  }
+  .story-nav{display:flex; gap:12px; justify-content:center; margin-top:8px;}
+  .story-nav button{
+    width:38px;height:38px;border-radius:50%; border:1px solid var(--line); background:var(--white);
+    display:flex; align-items:center; justify-content:center; transition:all .25s ease;
+  }
+  .story-nav button:hover{border-color:var(--gold); background:var(--gold-tint);}
+
+  /* ================= GALLERY ================= */
+  .gallery{padding:120px 0; background:var(--grey-bg);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:150px; gap:16px;}
+  .gallery-item{
+    border-radius:16px; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:16px;
+    color:var(--white); font-family:var(--ff-label); font-weight:600; font-size:0.85rem;
+    box-shadow:var(--shadow-tight);
+  }
+  .gallery-item::before{content:'';position:absolute;inset:0;opacity:0.9;}
+  .gallery-item span{position:relative; z-index:1;}
+  .gallery-item.tall{grid-row:span 2;}
+  .gallery-item.wide{grid-column:span 2;}
+
+  /* ================= COMPARISON ================= */
+  .compare{padding:130px 0; background:var(--white);}
+  .compare-table{
+    border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-soft);
+  }
+  .compare-row{display:grid; grid-template-columns:1.2fr 1fr 1fr; align-items:center;}
+  .compare-row.head{background:var(--charcoal); color:var(--white);}
+  .compare-row.head div{font-family:var(--ff-display); font-weight:700; font-size:1.02rem; padding:22px 26px;}
+  .compare-row.head div:first-child{color:rgba(255,255,255,0.55); font-family:var(--ff-label); font-weight:600; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em;}
+  .compare-row:not(.head){border-top:1px solid var(--line);}
+  .compare-row:not(.head):nth-child(odd){background:var(--grey-bg);}
+  .compare-row div{padding:20px 26px; font-size:0.95rem;}
+  .compare-row .label{font-family:var(--ff-label); font-weight:600; color:var(--charcoal-soft);}
+  .compare-row .trad{color:var(--charcoal-soft);}
+  .compare-row .mm{color:var(--charcoal); font-weight:600; display:flex; align-items:center; gap:8px;}
+  .compare-row .mm::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);}
+
+  /* ================= NUMBERS ================= */
+  .numbers{padding:100px 0; background:linear-gradient(135deg, #F3E9D6, #F8F9FB);}
+  .numbers-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;}
+  .num-item .num{font-family:var(--ff-display); font-weight:800; font-size:3rem; color:var(--charcoal); line-height:1;}
+  .num-item .num span{color:var(--gold-deep);}
+  .num-item .num-label{margin-top:10px; font-family:var(--ff-label); font-weight:600; font-size:0.88rem; color:var(--charcoal-soft);}
+
+  /* ================= PROCESS ================= */
+  .process{padding:130px 0; background:var(--white);}
+  .process-list{display:flex; flex-direction:column; margin-top:20px;}
+  .process-item{display:grid; grid-template-columns:110px 1fr; gap:28px; padding:34px 0; border-bottom:1px solid var(--line); position:relative;}
+  .process-item:first-child{padding-top:0;}
+  .process-step-num{font-family:var(--ff-display); font-weight:800; font-size:2.4rem; color:var(--gold-tint); -webkit-text-stroke:1.5px var(--gold);}
+  .process-body h4{font-size:1.2rem; margin-bottom:8px;}
+  .process-body p{color:var(--charcoal-soft); font-size:0.96rem; line-height:1.6; max-width:560px;}
+  .process-item.active .process-step-num{color:var(--gold); -webkit-text-stroke:0;}
+
+  /* ================= FAQ ================= */
+  .faq{padding:130px 0; background:var(--grey-bg);}
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{background:var(--white); border:1px solid var(--line); border-radius:var(--radius-sm); margin-bottom:14px; overflow:hidden; box-shadow:var(--shadow-tight);}
+  .faq-q{
+    display:flex; align-items:center; justify-content:space-between; padding:22px 26px; cursor:pointer;
+    font-family:var(--ff-label); font-weight:600; font-size:1rem;
+  }
+  .faq-q .plus{width:26px;height:26px;border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .35s ease, background .3s ease, border-color .3s ease; margin-left:16px;}
+  .faq-item.open .faq-q .plus{transform:rotate(135deg); background:var(--gold); border-color:var(--gold);}
+  .faq-item.open .faq-q .plus svg{stroke:var(--white);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .4s ease;}
+  .faq-a p{padding:0 26px 24px; color:var(--charcoal-soft); font-size:0.95rem; line-height:1.7;}
+
+  /* ================= FINAL CTA ================= */
+  .final-cta{padding:140px 0; text-align:center; background:var(--charcoal); position:relative; overflow:hidden;}
+  .final-cta::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(700px 380px at 50% 0%, rgba(200,166,90,0.22), transparent 70%);
+  }
+  .final-cta .wrap{position:relative;}
+  .final-cta .eyebrow{justify-content:center; color:var(--gold);}
+  .final-cta h2{color:var(--white); font-size:2.9rem; max-width:680px; margin:0 auto 18px; line-height:1.15;}
+  .final-cta p{color:rgba(255,255,255,0.68); font-size:1.1rem; max-width:520px; margin:0 auto 40px;}
+
+  /* ================= FOOTER ================= */
+  footer{background:#161616; color:rgba(255,255,255,0.7); padding:70px 0 30px;}
+  .footer-top{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:50px; padding-bottom:50px; border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-brand .brand{color:var(--white);}
+  .footer-brand p{margin-top:16px; font-size:0.92rem; line-height:1.7; max-width:320px; color:rgba(255,255,255,0.55);}
+  .footer-col h5{font-family:var(--ff-label); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:18px;}
+  .footer-col a{display:block; font-size:0.92rem; margin-bottom:12px; color:rgba(255,255,255,0.75); transition:color .25s;}
+  .footer-col a:hover{color:var(--gold);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; font-size:0.82rem; color:rgba(255,255,255,0.4); flex-wrap:wrap; gap:12px;}
+  .social-row{display:flex; gap:14px;}
+  .social-row a{width:38px;height:38px;border-radius:50%; border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; transition:all .3s ease;}
+  .social-row a:hover{border-color:var(--gold); background:rgba(200,166,90,0.12); transform:translateY(-3px);}
+
+  /* ================= FLOATING CTA ================= */
+  .floating-cta{
+    position:fixed; bottom:26px; right:26px; z-index:900;
+    display:flex; align-items:center; gap:10px; padding:15px 22px; border-radius:999px;
+    background:linear-gradient(135deg, var(--gold), var(--gold-deep)); color:var(--white);
+    font-family:var(--ff-label); font-weight:700; font-size:0.88rem;
+    box-shadow:0 16px 34px -12px rgba(169,132,63,0.6);
+    opacity:0; transform:translateY(20px) scale(0.9); pointer-events:none; transition:all .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .floating-cta.show{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+  .floating-cta:hover{transform:translateY(-4px) scale(1.03);}
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 980px){
+    .hero .wrap{grid-template-columns:1fr; text-align:center;}
+    .hero-copy p.lead{margin-left:auto; margin-right:auto;}
+    .hero-actions{justify-content:center;}
+    .hero-stats{justify-content:center;}
+    .hero-visual{order:-1; margin-bottom:10px;}
+    .about .wrap{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .workshop .wrap{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .numbers-grid{grid-template-columns:repeat(2,1fr); gap:36px;}
+    .compare-row{grid-template-columns:1fr 1fr 1fr; font-size:0.85rem;}
+    .compare-row div{padding:16px 12px;}
+    .nav-links{display:none;}
+    .footer-top{grid-template-columns:1fr; gap:32px;}
+  }
+  @media (max-width: 640px){
+    .wrap{padding:0 20px;}
+    .hero{padding:140px 0 80px;}
+    .hero h1{font-size:2.4rem;}
+    .section-head h2{font-size:1.85rem;}
+    .services-grid{grid-template-columns:1fr;}
+    .process-item{grid-template-columns:60px 1fr;}
+    .process-step-num{font-size:1.6rem;}
+    .gallery-grid{grid-template-columns:1fr 1fr; grid-auto-rows:120px;}
+    .float-badge{display:none;}
+    .timeline-track{flex-direction:column; align-items:flex-start; gap:28px;}
+    .timeline-line, .timeline-line-fill{display:none;}
+    .timeline-step{flex-direction:row; text-align:left; gap:16px; align-items:center;}
+    .timeline-dot{margin-bottom:0;}
+    .timeline-step p{max-width:none;}
+    .numbers-grid{grid-template-columns:1fr 1fr;}
+    .price-now{font-size:2.3rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="mark"><img src="/images /LOGO.jpg" alt=""></span>
+      <span>MathsManthra<small>Academy · Smija K S</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#workshop">Workshop</a>
+      <a href="#stories">Stories</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#workshop" class="nav-cta">Join the Workshop</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow reveal">MathsManthra Academy</div>
+      <h1 class="reveal">Empowering Teachers to Build <em>Successful Online Academies</em></h1>
+      <p class="lead reveal">Helping teachers, tutors and educators build a profitable online teaching business using AI, branding, digital marketing and proven teaching systems.</p>
+      <div class="hero-actions reveal">
+        <a href="#workshop" class="btn btn-primary">Join the Next Workshop</a>
+        <a href="#stories" class="btn btn-ghost">Watch Success Stories</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <div class="stat-num"><span class="counter" data-target="500">0</span>+</div>
+          <div class="stat-label">Teachers Trained</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span class="counter" data-target="8">0</span>K+</div>
+          <div class="stat-label">Community</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5-Day</div>
+          <div class="stat-label">Transformation Workshop</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="float-badge b1"><div class="n">100+</div><div class="l">Workshops Hosted</div></div>
+      <div class="portrait-card">
+        <img src="/images /profile.png">
+        <div class="portrait-caption">
+          <div class="name">Smija K S</div>
+          <div class="role">Founder, MathsManthra Academy &amp; Manthra Designs</div>
+        </div>
+      </div>
+      <div class="float-badge b2"><div class="n">4.9★</div><div class="l">Teacher Rated</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-titles reveal">
+      <div class="eyebrow">About Smija</div>
+      <div class="role-pill"><span class="dot"></span> Founder, MathsManthra Academy</div>
+      <div class="role-pill"><span class="dot"></span> Educational Consultant</div>
+      <div class="role-pill"><span class="dot"></span> Teacher Mentor</div>
+      <div class="role-pill"><span class="dot"></span> Online Academy Coach</div>
+    </div>
+    <div class="about-copy reveal">
+      <h2 style="font-size:2.1rem; margin-bottom:22px;">A teacher's journey, turned into a system for hundreds of teachers.</h2>
+      <p>Smija K S founded <strong>MathsManthra Academy</strong> and <strong>Manthra Designs</strong> after seeing how many talented teachers, tutors and abacus trainers were capped by the four walls of a classroom, no matter how good their teaching was.</p>
+      <p>Since then, she has guided over 500 educators through the shift from classroom-only teaching to confident, income-generating online academies, combining practical teaching experience with AI tools, personal branding and digital marketing systems built specifically for educators.</p>
+      <div class="mission-card">
+        <span class="tag">Her Mission</span>
+        <p>To help teachers move beyond traditional classrooms and confidently build successful online education businesses — with a clear system, not guesswork.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION TIMELINE -->
+<section class="timeline-sec" id="timeline">
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center;">The Transformation</div>
+      <h2>From the classroom to financial freedom</h2>
+      <p>Every teacher who joins MathsManthra follows the same proven arc — one milestone builds confidently into the next.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-track" id="timelineTrack">
+        <div class="timeline-line"></div>
+        <div class="timeline-line-fill" id="timelineFill"></div>
+        <div class="timeline-step"><div class="timeline-dot">1</div><h4>Traditional Teacher</h4><p>Skilled, dedicated, but limited by classroom walls</p></div>
+        <div class="timeline-step"><div class="timeline-dot">2</div><h4>Digital Teacher</h4><p>Learns AI tools and online teaching systems</p></div>
+        <div class="timeline-step"><div class="timeline-dot">3</div><h4>Personal Brand</h4><p>Builds a name students and parents trust</p></div>
+        <div class="timeline-step"><div class="timeline-dot">4</div><h4>Online Academy</h4><p>Launches a structured, scalable teaching business</p></div>
+        <div class="timeline-step final"><div class="timeline-dot">5</div><h4>Financial Freedom</h4><p>Income and impact, on her own terms</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What We Offer</div>
+      <h2>Everything a teacher needs to go online</h2>
+      <p>Six focused programs, each solving a specific part of the journey from classroom teacher to online academy owner.</p>
+    </div>
+    <div class="services-grid reveal-stagger">
+      <div class="service-card reveal" style="--i:0">
+        <span class="service-num">01</span>
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 9.5h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h4>5-Day Teachers Workshop</h4>
+        <p>The flagship live program that takes you from where you are to a working online teaching plan.</p>
+      </div>
+      <div class="service-card reveal" style="--i:1">
+        <span class="service-num">02</span>
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 5-9 5-9-5 9-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 13l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17.5l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Online Academy Setup</h4>
+        <p>Structure your courses, pricing and platform so your academy runs like a real business.</p>
+      </div>
+      <div class="service-card reveal" style="--i:2">
+        <span class="service-num">03</span>
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+        <h4>AI for Teachers</h4>
+        <p>Practical AI tools to plan lessons, create materials and save hours every week.</p>
+      </div>
+      <div class="service-card reveal" style="--i:3">
+        <span class="service-num">04</span>
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 13.5L7 21l5-2.5 5 2.5-1.5-7.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h4>Teacher Branding</h4>
+        <p>Become the recognisable, trusted name in your subject and your city — online.</p>
+      </div>
+      <div class="service-card reveal" style="--i:4">
+        <span class="service-num">05</span>
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></div>
+        <h4>Instagram Growth</h4>
+        <p>Build an audience of parents and students who follow, trust and enrol.</p>
+      </div>
+      <div class="service-card reveal" style="--i:5">
+        <span class="service-num">06</span>
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg></div>
+        <h4>Student Acquisition System</h4>
+        <p>A repeatable system to consistently fill your seats — without relying on luck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP -->
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Gallery</div>
+      <h2>Moments from the MathsManthra journey</h2>
+      <p>Workshops, teacher events, speaking sessions and certificate ceremonies.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      
+      <div class="gallery-item tall" style="position: relative; overflow: hidden; border-radius: 8px;">
+        <img src="/images /Live Workshop Session.jpg" alt="Live Workshop Session" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <span style="position: relative; z-index: 1; display: block; padding: 20px;">Live Workshop Session</span>
+      </div>
+      
+      <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 8px;">
+        <img src="/images /teachers.jpg" alt="Teacher Meetup" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <span style="position: relative; z-index: 1; display: block; padding: 20px;">Teacher Meetup</span>
+      </div>
+      
+      <div class="gallery-item wide" style="position: relative; overflow: hidden; border-radius: 8px;">
+        <img src="/images /selfi.PNG" alt="Speaking Session" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <span style="position: relative; z-index: 1; display: block; padding: 20px;">Speaking Session</span>
+      </div>
+      
+      <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 8px;">
+        <img src="/images /with_Certificate .jpg" alt="Certificate Ceremony" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <span style="position: relative; z-index: 1; display: block; padding: 20px;">Certificate Ceremony</span>
+      </div>
+      
+      <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 8px;">
+        <img src="/images /IMG_3014.PNG" alt="Student Achievement" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <span style="position: relative; z-index: 1; display: block; padding: 20px;">Student Achievement</span>
+      </div>
+      
+      <div class="gallery-item wide" style="position: relative; overflow: hidden; border-radius: 8px;">
+        <img src="/images /with_Student.jpg" alt="Batch Photo — Cohort 12" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <span style="position: relative; z-index: 1; display: block; padding: 20px;">Batch Photo — Cohort 12</span>
+      </div>
+      
+      <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 8px;">
+        <img src="/images /LOGO.jpg" alt="AI Workshop Day" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <span style="position: relative; z-index: 1; display: block; padding: 20px;">AI Workshop Day</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS STORIES -->
+<section class="stories" id="stories">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Success Stories</div>
+      <h2>Teachers who made the leap</h2>
+      <p>Real transformations from teachers who turned their classroom experience into thriving online academies. <em style="font-style:normal;color:var(--charcoal-soft);">(Sample stories shown — swap in your own testimonials and photos.)</em></p>
+    </div>
+    <div class="story-track-wrap reveal">
+      <div class="story-track" id="storyTrack">
+        <div class="story-card">
+          <div class="story-stars">★★★★★</div>
+          <p class="story-quote">"I was tutoring 8 students from my living room. After the workshop, I had the confidence and the system to launch my own online academy."</p>
+          <div class="story-metric">3× student growth</div>
+          <div class="story-person">
+            <div class="avatar" style="background:linear-gradient(135deg,#C8A65A,#A9843F);">RA</div>
+            <div class="who"><b>Rekha A.</b><span>Tuition Teacher, Kerala</span></div>
+          </div>
+        </div>
+        <div class="story-card">
+          <div class="story-stars">★★★★★</div>
+          <p class="story-quote">"As an abacus trainer, I never thought I could teach online. MathsManthra's branding module changed how parents saw my classes."</p>
+          <div class="story-metric">₹40K+ monthly income</div>
+          <div class="story-person">
+            <div class="avatar" style="background:linear-gradient(135deg,#1E1E1E,#4A4A4A);">PS</div>
+            <div class="who"><b>Priya S.</b><span>Abacus Trainer</span></div>
+          </div>
+        </div>
+        <div class="story-card">
+          <div class="story-stars">★★★★★</div>
+          <p class="story-quote">"The AI tools alone saved me 10 hours a week on lesson prep. The 5-day workshop paid for itself in the first week."</p>
+          <div class="story-metric">10 hrs saved / week</div>
+          <div class="story-person">
+            <div class="avatar" style="background:linear-gradient(135deg,#C8A65A,#A9843F);">MJ</div>
+            <div class="who"><b>Meera J.</b><span>School Teacher</span></div>
+          </div>
+        </div>
+        <div class="story-card">
+          <div class="story-stars">★★★★★</div>
+          <p class="story-quote">"I was a homemaker with a teaching degree gathering dust. Today I run a small online academy with 60 students."</p>
+          <div class="story-metric">60 students enrolled</div>
+          <div class="story-person">
+            <div class="avatar" style="background:linear-gradient(135deg,#1E1E1E,#4A4A4A);">AN</div>
+            <div class="who"><b>Anjali N.</b><span>Homemaker &amp; Educator</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="story-nav">
+        <button id="storyPrev" aria-label="Previous">←</button>
+        <button id="storyNext" aria-label="Next">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="compare" id="compare">
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center;">The Difference</div>
+      <h2>Traditional teaching vs. the MathsManthra system</h2>
+      <p>Same skills, same dedication — a completely different ceiling on income, reach and growth.</p>
+    </div>
+    <div class="compare-table reveal">
+      <div class="compare-row head">
+        <div>Compare</div>
+        <div>Traditional Teaching</div>
+        <div>MathsManthra System</div>
+      </div>
+      <div class="compare-row"><div class="label">Income</div><div class="trad">Capped by hours &amp; local rates</div><div class="mm">Scales beyond classroom hours</div></div>
+      <div class="compare-row"><div class="label">Reach</div><div class="trad">Limited to one location</div><div class="mm">Students from anywhere</div></div>
+      <div class="compare-row"><div class="label">Technology</div><div class="trad">Minimal or none</div><div class="mm">AI tools &amp; digital systems</div></div>
+      <div class="compare-row"><div class="label">Marketing</div><div class="trad">Word of mouth only</div><div class="mm">Personal brand &amp; content strategy</div></div>
+      <div class="compare-row"><div class="label">Growth</div><div class="trad">Slow, unpredictable</div><div class="mm">Structured, repeatable system</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers">
+  <div class="wrap">
+    <div class="numbers-grid">
+      <div class="num-item reveal"><div class="num"><span class="counter" data-target="500">0</span><span>+</span></div><div class="num-label">Teachers Trained</div></div>
+      <div class="num-item reveal"><div class="num"><span class="counter" data-target="8000">0</span><span>+</span></div><div class="num-label">Community Members</div></div>
+      <div class="num-item reveal"><div class="num"><span class="counter" data-target="100">0</span><span>+</span></div><div class="num-label">Workshops Hosted</div></div>
+      <div class="num-item reveal"><div class="num-static" style="font-family:var(--ff-display);font-weight:800;font-size:3rem;">Thousands</div><div class="num-label">Students Impacted</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How It Works</div>
+      <h2>Your path to an online academy, in five steps</h2>
+      <p>A clear, sequential process — each step is designed to build directly on the one before it.</p>
+    </div>
+    <div class="process-list reveal-stagger">
+      <div class="process-item reveal" style="--i:0"><div class="process-step-num">01</div><div class="process-body"><h4>Join the Free Webinar</h4><p>Start with a free session to understand exactly what building an online academy involves — no commitment required.</p></div></div>
+      <div class="process-item reveal" style="--i:1"><div class="process-step-num">02</div><div class="process-body"><h4>Attend the 5-Day Workshop</h4><p>Go deep on AI, branding, marketing and systems in five live, interactive sessions with Smija K S.</p></div></div>
+      <div class="process-item reveal" style="--i:2"><div class="process-step-num">03</div><div class="process-body"><h4>Build Your Brand</h4><p>Shape your teacher identity — the name, story and presence students and parents will recognise and trust.</p></div></div>
+      <div class="process-item reveal" style="--i:3"><div class="process-step-num">04</div><div class="process-body"><h4>Launch Your Online Academy</h4><p>Put your courses, pricing and platform live, backed by a structured launch plan.</p></div></div>
+      <div class="process-item reveal" style="--i:4"><div class="process-step-num">05</div><div class="process-body"><h4>Grow Your Income</h4><p>Use the student acquisition system to keep filling seats and compounding your growth.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center;">Questions</div>
+      <h2>Frequently asked questions</h2>
+      <p>Everything teachers usually ask before joining the workshop.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">Can beginners join?<div class="plus"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#1E1E1E" stroke-width="1.5"/></svg></div></div>
+        <div class="faq-a"><p>Yes. The workshop is designed for teachers at every stage — whether you're just curious about online teaching or already tutoring and ready to scale.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need technical knowledge?<div class="plus"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#1E1E1E" stroke-width="1.5"/></svg></div></div>
+        <div class="faq-a"><p>No prior tech experience is needed. Every tool and system is taught step-by-step, in plain language, live during the sessions.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is there lifetime support?<div class="plus"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#1E1E1E" stroke-width="1.5"/></svg></div></div>
+        <div class="faq-a"><p>You'll join a growing community of MathsManthra teachers, with ongoing guidance from Smija long after the workshop ends.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I teach from home?<div class="plus"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#1E1E1E" stroke-width="1.5"/></svg></div></div>
+        <div class="faq-a"><p>Absolutely — the entire system is built for teachers running their academy from home, including many who started as homemakers.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I get students?<div class="plus"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12M0 6h12" stroke="#1E1E1E" stroke-width="1.5"/></svg></div></div>
+        <div class="faq-a"><p>The Student Acquisition System, taught in the workshop, gives you a repeatable process for attracting and enrolling students consistently.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="wrap">
+    <div class="eyebrow reveal">Start Today</div>
+    <h2 class="reveal">Ready to Build Your Online Teaching Business?</h2>
+    <p class="reveal">Join hundreds of teachers transforming their careers with MathsManthra Academy.</p>
+    <a href="https://wa.me/917560908799?text=Hi%20Smija,%20I'd%20like%20to%20reserve%20my%20seat%20for%20the%205-Day%20Online%20Teachers%20Workshop!" target="_blank" rel="noopener" class="btn btn-primary reveal">Join Now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand"><span class="mark"><img src="/images /LOGO.jpg" alt=""></span><span>MathsManthra<small style="color:rgba(255,255,255,0.5);">Academy · Smija K S</small></span></a>
+        <p>Helping teachers transform their teaching skills into successful online education businesses using AI, branding, marketing and digital systems.</p>
+        <div class="social-row" style="margin-top:22px;">
+          <a href="https://instagram.com/mathsmanthra_smija_k_s" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://wa.me/917560908799?text=Hi%20Smija,%20I'd%20like%20to%20reserve%20my%20seat%20for%20the%205-Day%20Online%20Teachers%20Workshop!" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+          <a href="mailto:hello@mathsmanthra.com" aria-label="Email">@</a>
+          <a href="#" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#workshop">Workshop</a>
+        <a href="#stories">Success Stories</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="https://instagram.com/mathsmanthra_smija_k_s" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/917560908799?text=Hi%20Smija,%20I'd%20like%20to%20reserve%20my%20seat%20for%20the%205-Day%20Online%20Teachers%20Workshop!" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:hello@mathsmanthra.com">Email</a>
+        <a href="#" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MathsManthra Academy. All rights reserved.</span>
+      <span>Designed for Smija K S — Founder, MathsManthra Academy &amp; Manthra Designs</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#workshop" class="floating-cta" id="floatingCta">Join the Workshop →</a>
+
+<script>
+(function(){
+  // Scroll progress
+  const progress = document.getElementById('scrollProgress');
+  const navbar = document.getElementById('navbar');
+  const floatingCta = document.getElementById('floatingCta');
+  function onScroll(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+    navbar.classList.toggle('scrolled', h.scrollTop > 40);
+    floatingCta.classList.toggle('show', h.scrollTop > 700);
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Counters
+  const counters = document.querySelectorAll('.counter');
+  const counterIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        const target = parseInt(el.dataset.target, 10);
+        const dur = 1600;
+        const start = performance.now();
+        function tick(now){
+          const p = Math.min((now-start)/dur, 1);
+          const eased = 1 - Math.pow(1-p, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString();
+          if(p < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(tick);
+        counterIO.unobserve(el);
+      }
+    });
+  }, {threshold:0.5});
+  counters.forEach(el=>counterIO.observe(el));
+
+  // Timeline fill + active dots
+  const timelineTrack = document.getElementById('timelineTrack');
+  const timelineFill = document.getElementById('timelineFill');
+  const timelineSteps = document.querySelectorAll('.timeline-step');
+  const timelineIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        timelineFill.style.width = '100%';
+        timelineSteps.forEach((s,i)=>{
+          setTimeout(()=>s.classList.add('active'), i*220);
+        });
+        timelineIO.unobserve(timelineTrack);
+      }
+    });
+  }, {threshold:0.3});
+  if(timelineTrack) timelineIO.observe(timelineTrack);
+
+  // Process active highlight
+  const processItems = document.querySelectorAll('.process-item');
+  const processIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('active'); }
+    });
+  }, {threshold:0.5});
+  processItems.forEach(el=>processIO.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=>{
+        if(o!==item){ o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        a.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Story carousel
+  const track = document.getElementById('storyTrack');
+  const prev = document.getElementById('storyPrev');
+  const next = document.getElementById('storyNext');
+  function scrollAmt(){ return track.querySelector('.story-card').offsetWidth + 24; }
+  if(prev) prev.addEventListener('click', ()=> track.scrollBy({left:-scrollAmt(), behavior:'smooth'}));
+  if(next) next.addEventListener('click', ()=> track.scrollBy({left:scrollAmt(), behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>
